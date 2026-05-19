@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --red: #c0392b;
+      --nav-height: 56px;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'EB Garamond', Georgia, serif;
+      overflow: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      z-index: 100;
+      background: var(--black);
+    }
+
+    nav a {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-decoration: none;
+      padding-bottom: 3px;
+      border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    nav a:hover { color: #ccc; }
+
+    nav a.active {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 39.5% 60.5%;
+      height: 100vh;
+      padding-top: var(--nav-height);
+    }
+
+    /* LEFT PANEL */
+    .left {
+      background: var(--black);
+      display: flex;
+      align-items: flex-end;
+      padding: 0 52px 72px 52px;
+    }
+
+    .bio {
+      max-width: 360px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.9s ease 0.3s forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bio p {
+      font-size: 18px;
+      line-height: 1.65;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1.2em;
+    }
+
+    .bio p:last-child { margin-bottom: 0; }
+
+    .bio strong {
+      font-weight: 500;
+    }
+
+    .bio a {
+      color: var(--white);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: color 0.2s;
+    }
+
+    .bio a:hover { color: #aaa; }
+
+    /* RIGHT PANEL — photo */
+    .right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      opacity: 0;
+      animation: fadeIn 1.1s ease 0.1s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* placeholder when no image is provided */
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeIn 1.1s ease 0.1s forwards;
+    }
+
+    .photo-placeholder svg {
+      width: 64px;
+      height: 64px;
+      opacity: 0.25;
+    }
+
+    .photo-placeholder span {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: #555;
+      text-transform: uppercase;
+    }
+
+    /* upload hint */
+    .upload-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: #444;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      html, body { overflow: auto; }
+
+      nav {
+        gap: 16px;
+        flex-wrap: wrap;
+        padding: 12px 16px;
+        height: auto;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: 60vw 1fr;
+        height: auto;
+        padding-top: 0;
+        margin-top: 80px;
+      }
+
+      .right { order: -1; height: 60vw; }
+
+      .left {
+        padding: 40px 28px 56px;
+        align-items: flex-start;
+      }
+
+      .bio p { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#">Photography</a>
+    <a href="#">Videography</a>
+    <a href="#">Music</a>
+    <a href="#">Video Essays</a>
+    <a href="#">Writing</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <main class="hero">
+    <div class="left">
+      <div class="bio">
+        <p><strong>Your Name</strong> is a photographer, videographer and writer. Their artistic practice spans documentary photography, film essays, collaborative projects and published works.</p>
+        <p>They are currently working on <a href="#">Project One</a> and <a href="#">Project Two</a>.</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <!--
+        Replace the placeholder below with your photo:
+        <img src="your-photo.jpg" alt="Your Name">
+      -->
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>Add your photo here</span>
+      </div>
+      <div class="upload-hint">Replace placeholder with your portrait image</div>
+    </div>
+  </main>
+
+</body>
+</html>
